@@ -11,3 +11,25 @@ target_sources(foo
     PRIVATE
         foo.cpp
 )
+
+# Build private tests
+add_executable(foo-test)
+
+target_link_libraries(foo-test
+    PRIVATE
+        ${GTEST_LIBS}
+        ${GMOCK_LIBS}
+        $<TARGET_PROPERTY:foo,LINK_LIBRARIES>
+)
+
+target_include_directories(foo-test
+    PRIVATE
+        $<TARGET_PROPERTY:foo,INCLUDE_DIRECTORIES>
+)
+
+target_sources(foo-test
+    PRIVATE
+        foo_private_test.cpp
+)
+
+gtest_discover_tests(foo-test)
