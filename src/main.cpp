@@ -1,3 +1,5 @@
+#include "foo/foo.h"
+
 #include <cstdlib>
 #include <iostream>
 
