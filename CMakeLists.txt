@@ -15,3 +15,5 @@ find_package(GTest REQUIRED)
 set(GTEST_LIBS GTest::gtest GTest::gtest_main)
 set(GMOCK_LIBS GTest::gmock GTest::gmock_main)
 set(CMAKE_GTEST_DISCOVER_TESTS_DISCOVERY_MODE PRE_TEST)
+
+add_subdirectory(src)
