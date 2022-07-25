@@ -1,0 +1,32 @@
+name: Build and Run Tests
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sudo apt update
+      - run: sudo apt -y upgrade
+      - name: Install Clang
+        run: sudo apt install -y clang
+      - name: Install CMake
+        run: sudo apt install -y cmake
+      - name: Install GoogleTest
+        run: |
+          sudo apt install -y libgtest-dev
+          sudo apt install -y libgmock-dev
+      - uses: actions/checkout@v3
+      - name: Create a building folder
+        run: mkdir build
+      - name: Generate project files
+        working-directory: ${{github.workspace}}/build
+        run: cmake ..
+      - name: Build the project
+        working-directory: ${{github.workspace}}/build
+        run: cmake --build .
+      - name: Run tests
+        working-directory: ${{github.workspace}}/build
+        run: ctest -VV
