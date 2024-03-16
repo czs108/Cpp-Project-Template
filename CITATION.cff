@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+authors:
+- family-names: Your family name
+  given-names: Your given name
+  orcid: https://orcid.org/0000-0000-0000-0000
+title: Your repository
+date-released: 2023-01-01
+url: https://github.com/your-repository
